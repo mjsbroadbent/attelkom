@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<TITLE>nav</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+// image swap for buttons - by Marat
+if (document.images) {
+  var names = new Array("home","about","breeds","pedigree","transport","catalogue","contact");
+  var on = new Array(); var off = new Array();
+  for (var i = 0; i < names.length; i++) {
+    on[names[i]] = new Image(); on[names[i]].src = "btn_" + names[i] + "_on.gif";
+    off[names[i]] = new Image(); off[names[i]].src = "btn_" + names[i] + ".gif";
+  }
+}
+function hi(n) { if (document.images) document.images[n].src = on[n].src; }
+function lo(n) { if (document.images) document.images[n].src = off[n].src; }
+// -->
+</SCRIPT>
+</HEAD>
+<BODY BGCOLOR="#003300" BACKGROUND="marble.gif" TEXT="#D4AF37" LINK="#FFE682" VLINK="#FFE682" LEFTMARGIN="5" TOPMARGIN="5" MARGINWIDTH="5" MARGINHEIGHT="5">
+<CENTER>
+<A HREF="main.html" TARGET="main"><IMG SRC="logo.gif" WIDTH="170" HEIGHT="120" BORDER="0" ALT="Akyel Syndicate"></A>
+<P>
+<A HREF="main.html" TARGET="main" onMouseOver="hi('home')" onMouseOut="lo('home')"><IMG SRC="btn_home.gif" NAME="home" WIDTH="150" HEIGHT="28" BORDER="0" ALT="Home"></A><BR>
+<IMG SRC="spacer.gif" WIDTH="1" HEIGHT="4"><BR>
+<A HREF="about.html" TARGET="main" onMouseOver="hi('about')" onMouseOut="lo('about')"><IMG SRC="btn_about.gif" NAME="about" WIDTH="150" HEIGHT="28" BORDER="0" ALT="About us"></A><BR>
+<IMG SRC="spacer.gif" WIDTH="1" HEIGHT="4"><BR>
+<A HREF="breeds.html" TARGET="main" onMouseOver="hi('breeds')" onMouseOut="lo('breeds')"><IMG SRC="btn_breeds.gif" NAME="breeds" WIDTH="150" HEIGHT="28" BORDER="0" ALT="Our breeds"></A><BR>
+<IMG SRC="spacer.gif" WIDTH="1" HEIGHT="4"><BR>
+<A HREF="pedigree.html" TARGET="main" onMouseOver="hi('pedigree')" onMouseOut="lo('pedigree')"><IMG SRC="btn_pedigree.gif" NAME="pedigree" WIDTH="150" HEIGHT="28" BORDER="0" ALT="Pedigrees"></A><BR>
+<IMG SRC="spacer.gif" WIDTH="1" HEIGHT="4"><BR>
+<A HREF="transport.html" TARGET="main" onMouseOver="hi('transport')" onMouseOut="lo('transport')"><IMG SRC="btn_transport.gif" NAME="transport" WIDTH="150" HEIGHT="28" BORDER="0" ALT="Transport"></A><BR>
+<IMG SRC="spacer.gif" WIDTH="1" HEIGHT="4"><BR>
+<A HREF="catalogue.html" TARGET="main" onMouseOver="hi('catalogue')" onMouseOut="lo('catalogue')"><IMG SRC="btn_catalogue.gif" NAME="catalogue" WIDTH="150" HEIGHT="28" BORDER="0" ALT="Catalogue"></A><BR>
+<IMG SRC="spacer.gif" WIDTH="1" HEIGHT="4"><BR>
+<A HREF="contact.html" TARGET="main" onMouseOver="hi('contact')" onMouseOut="lo('contact')"><IMG SRC="btn_contact.gif" NAME="contact" WIDTH="150" HEIGHT="28" BORDER="0" ALT="Contact"></A>
+<P>
+<FONT FACE="Arial" SIZE="1" COLOR="#D4AF37">
+English | <A HREF="#" TARGET="main">Russian</A> | <A HREF="#" TARGET="main">Iradi</A><BR>
+(translations in preparation)
+<P>
+&copy; 1998 Akyel Syndicate<BR>
+Webmaster: <A HREF="mailto:marat4086@attelkom.net">Marat</A>
+</FONT>
+</CENTER>
+</BODY>
+</HTML>
