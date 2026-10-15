@@ -8,7 +8,7 @@ The deprecated 1999-era Attelkom Online site of the Irad worldbuilding project, 
 - Links inside the site are relative, so it works both at mjsbroadbent.github.io/attelkom/ and at the root of www.attelkom.net.
 - `404.html` (GitHub Pages) and `not_found.html` (Neocities) are the same old-Apache "Not Found" page, pointing lost visitors to the directory.
 - `tools/make_ephemera.py` draws the 1999 front-page extras: the 88×31 buttons in `images/badges/`, the visitor counter, the spinning globe, the guestbook mailbox. Several images (the header, footer slices, a few buttons) are missing on purpose, as on a real abandoned site. The top banner and one footer button are live Attelkom Jarnama ads (dial-up era).
-- Search engine and Internet Explorer links go to the Wayback Machine's December 1999 copies; the site's own dead links are relative, so they land on the 404 page.
+- Search engine and Internet Explorer links go straight to the real domains (altavista.com, excite.com, google.com, lycos.com, yahoo.com, microsoft.com); the site's own dead links are relative, so they land on the 404 page.
 - `tools/morkhan3d.py` renders the spinning "CGI" Morkhan heads on the tüntolk fan page (users/Kanykei5093). Member-site photos added in October 2026 are FLUX renders made to look like 1999–2003 snapshots; the photos the pages themselves call broken ("photo coming soon", "my brother will scan it", a C:\My Documents path) are left missing on purpose.
 - Member pages show the 88×31 `images/hosted_attelkom.gif` button instead of the full-size logo. `tools/make_member_art.py` draws the Akyel Syndicate logo (users/Marat4086/logo.gif) and the KARA-BUURA cartoon goat (users/Bolot7720/goat.gif, goat_small.gif).
 
