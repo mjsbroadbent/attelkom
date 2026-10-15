@@ -1,0 +1,30 @@
+Photo credits for My Year in Talas (not linked from the pages).
+Photos were downscaled to 320 px wide and recompressed as low-quality JPEG.
+
+pics/horses1.jpg
+  Original title: File:Ala-Bel pass, Kyrgyzstan (30629815208).jpg
+  Author: Ninara from Helsinki, Finland
+  Licence: CC BY 2.0 https://creativecommons.org/licenses/by/2.0
+  Source: https://commons.wikimedia.org/wiki/File:Ala-Bel_pass,_Kyrgyzstan_(30629815208).jpg
+  Modified: resized and recompressed.
+
+pics/kymyz.jpg
+  Original title: File:Song Kol Kymyz.png
+  Author: Mario Biondi writer
+  Licence: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Source: https://commons.wikimedia.org/wiki/File:Song_Kol_Kymyz.png
+  Modified: resized and recompressed.
+
+pics/myblock.jpg
+  Original title: File:Taraz Apartment (5723654982).jpg
+  Author: upyernoz from Haverford, USA
+  Licence: CC BY 2.0 https://creativecommons.org/licenses/by/2.0
+  Source: https://commons.wikimedia.org/wiki/File:Taraz_Apartment_(5723654982).jpg
+  Modified: resized and recompressed.
+
+pics/bazaar.jpg
+  Original title: File:Osh Bazaar Bishkek, Kyrgyzstan (1407198324).jpg
+  Author: Thomas Depenbusch (Depi) from Cologne, Germany
+  Licence: CC BY 2.0 https://creativecommons.org/licenses/by/2.0
+  Source: https://commons.wikimedia.org/wiki/File:Osh_Bazaar_Bishkek,_Kyrgyzstan_(1407198324).jpg
+  Modified: resized and recompressed.
