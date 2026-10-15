@@ -1,0 +1,93 @@
+<HTML><HEAD><title>Irad's biggest webring</title>
+<link rel="icon" type="image/x-icon" href="../../favicon.ico"></HEAD>
+<BODY bgcolor=999999>
+    <script>
+(function titleScroller(text) {
+    document.title = text;
+    setTimeout(function () {
+        titleScroller(text.substr(1) + text.substr(0, 1));
+    }, 500);
+}("Irad's biggest webring - join us for everything Irad - if you love freedom and horses and beautiful land you are home! "));
+</script>
+
+<CENTER><br/>
+<h1>Welcome to my Irad Homepage and Webring!</h1>
+<br/>
+
+<p> Hi my name is Erbol this is my internet portal and webring for my home country of Irad. I'm trying to collect all things Irad on the web, let me know if you find something that I can put on my lists. I'm still learning how to code so please excuse it if something is broken. I hope you enjoy your time here.</p>
+
+<div id="visitorCounter">
+    <p>You are visitor number: <span id="counter">Loading...</span></p>
+</div>
+
+<br/>
+<h1>Irad Internet Portal</h1>
+<table>
+  <tr>
+    <th><img src="internet.gif"></th>
+    <th><b>Important Links</b><br/>
+<a href="https://iradone.com/">IradOne Television</a><br/>
+<a href="https://iradpalaceof.art/">Irad Palace of Art</a><br/></th>
+  </tr>
+</table>
+
+
+<br/><br/>
+<h1>Irad Internet Webring</h1>
+<img src="horsering.jpg">
+<br/><br/>
+ Would you like to join the most free place on the Internet? Let me know and add this to your approved web site!
+<br/><br/>
+
+    
+   
+        <!-- area where html can be copied from -->
+    <textarea id="codes" name="codes" rows="12" cols="60"></textarea>
+ <br/>
+    
+        <div id='list'></div>
+    <script>
+        function activate() {
+            var ihtml="<center><br /><br /><br />participant list<br /><br /><table border='2px'><tbody><tr><td>";
+            for (var i=0;i<urls.length;i++){
+                if (urls[i]!=""){
+                    ihtml+="&nbsp;" + (i+1) + " - <a href='" + urls[i] + "'>" + urls[i] + "</a>";
+                    if (i==id){
+                        ihtml+=" &lt;&lt;&nbsp;<p></p>";
+                    }else{
+                        ihtml+="&nbsp;<p></p>";
+                    }//end if
+                }//end if
+            }//next
+            ihtml+="</td></tr></tbody></table></center>";
+
+            document.getElementById('list').innerHTML=ihtml;
+        }//
+    </script>
+    <script src="getid.js"></script>
+        <br/><br/>
+
+    
+    <br/><br/>       
+    
+    <!-- div where your webring html will be displayed -->
+    <div id="ringbase"></div>
+     </CENTER>
+    <script>
+        //change this to the title of your webring if you want
+        var ringtitle = "IRAD WEBRING";
+        
+        //this can probably be left alone, but change this to your webring url base directory if required. 
+        //ex: var ringurl = "https://www.site.com/webring/";
+        var ringurl = window.location.href.replace(/[^/]*$/, '');
+        
+        //this html will be injected into the textarea and div
+        var codes="<a href=\""+ringurl+"\"><img src=\""+ringurl+"webring.png\"><br>"+ringtitle+"</a><br>[<a href=\""+ringurl+"prev.html?id=0\">&lt;PREV</a> <a href=\""+ringurl+"rand.html?id=0\">RAND</a> <a href=\""+ringurl+"list.html?id=0\">LIST</a> <a href=\""+ringurl+"next.html?id=0\">NEXT&gt;</a> ]";
+        
+        document.getElementById("codes").value=codes
+        document.getElementById("ringbase").innerHTML=codes 
+        
+    </script>
+</BODY>
+</HTML>
+

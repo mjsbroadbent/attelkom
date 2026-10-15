@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <title>Welcome to Sexy Horse Woman</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #ff0;
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-top: 50px;
+            color: #f00;
+        }
+        p {
+            font-size: 1.5rem;
+        }
+        .age-verification {
+            margin-top: 50px;
+        }
+        .age-verification input {
+            padding: 10px;
+            font-size: 1rem;
+        }
+        .age-verification button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #f00;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .age-verification button:hover {
+            background-color: #c00;
+        }
+        .content {
+            display: none;
+            margin-top: 50px;
+        }
+        .content img {
+            width: 300px;
+            border: 5px solid #ff0;
+            margin: 10px;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="age-verification">
+        <h1>Welcome to Sexy Horse Woman Home of Equestrian Beauties</h1>
+        <p>You must be at least 18 years old to enter this site.</p>
+        <input type="number" id="age" placeholder="Enter your age" min="0">
+        <button onclick="verifyAge()">Enter</button>
+    </div>
+
+    <div class="content" id="content">
+        <h2>Gallery of Beauties</h2>
+        <a href="1.jpg" target="_blank">
+        <img src="1.jpg"></a>
+        <a href="2.jpg" target="_blank">
+        <img src="2.jpg"></a>
+        <a href="3.jpg" target="_blank">
+        <img src="3.jpg"></a>
+        <a href="4.jpg" target="_blank">
+        <img src="4.jpg"></a>
+        <a href="5.jpg" target="_blank">
+        <img src="5.jpg"></a>
+        <a href="6.jpg" target="_blank">
+        <img src="6.jpg"></a>
+        <a href="7.jpg" target="_blank">
+        <img src="7.jpg"></a>
+        <a href="8.jpg" target="_blank">
+        <img src="8.jpg"></a>
+        <a href="9.jpg" target="_blank">
+        <img src="9.jpg"></a>
+        <a href="10.jpg" target="_blank">
+        <img src="10.jpg"></a>
+    </div>
+    
+        <div class="footer">
+            <p>© 1997 Sexy Horse Woman. All rights reserved.</p>
+                    <a href="http://www.attelkom.net" alt="Irad web hosting"><img src="https://attelkom.net/images/attelkom.png" height="118"></a><br>
+<a href="https://attelkom.net/users/Erbol8645/"><img src="https://attelkom.net/users/Erbol8645/webring.png"><br>IRAD WEBRING</a><br>[<a href="https://attelkom.net/users/Erbol8645/prev.html?id=8">&lt;PREV</a> <a href="https://attelkom.net/users/Erbol8645/rand.html?id=8">RAND</a> <a href="https://attelkom.net/users/Erbol8645/list.html?id=8">LIST</a> <a href="https://attelkom.net/users/Erbol8645/next.html?id=8">NEXT&gt;</a> ]
+        </div>
+    <script>
+        function verifyAge() {
+            const age = document.getElementById('age').value;
+            if (age >= 18) {
+                document.querySelector('.age-verification').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } else {
+                alert('THIS SITE IS FOR ADULTS!');
+            }
+        }
+    </script>
+</body>
+</html>

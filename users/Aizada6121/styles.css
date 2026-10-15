@@ -1,0 +1,134 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    background-image: url('background.jpg'); /* Tiling background image */
+    background-repeat: repeat;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 800px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 40px 20px;
+    background-image: url('banner.jpg'); /* Background image for the title banner */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+}
+
+header h1 {
+    font-family: 'Verdana', sans-serif;
+    font-size: 48px; /* Larger font size for the banner */
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Stronger shadow for the title */
+}
+
+header p {
+    font-size: 20px; /* Slightly larger font size for the tagline */
+    margin: 10px 0 0;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle shadow for the tagline */
+}
+
+/* Navigation Styles */
+nav {
+    background-color: rgba(51, 51, 51, 0.9); /* Semi-transparent dark gray */
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #4CAF50; /* Green */
+}
+
+/* Article Styles */
+article {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: rgba(249, 249, 249, 0.9); /* Semi-transparent light gray */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+article h2 {
+    font-family: 'Georgia', serif;
+    font-size: 28px;
+    color: #4CAF50; /* Green */
+    margin-bottom: 10px;
+}
+
+article img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+article .date {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+article p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+article strong {
+    color: #4CAF50; /* Green */
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(51, 51, 51, 0.9); /* Semi-transparent dark gray */
+    border-radius: 10px;
+    color: #fff;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}

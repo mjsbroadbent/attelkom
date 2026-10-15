@@ -1,0 +1,24 @@
+<HTML><HEAD></HEAD>
+<BODY>
+    <div id='list'></div>
+    <script>
+        function activate() {
+            var ihtml="<center><br /><a href='.'>[webring home]</a><br /><br />participant list<br /><br /><table border='2px'><tbody><tr><td>";
+            for (var i=0;i<urls.length;i++){
+                if (urls[i]!=""){
+                    ihtml+="&nbsp;" + (i+1) + " - <a href='" + urls[i] + "'>" + urls[i] + "</a>";
+                    if (i==id){
+                        ihtml+=" &lt;&lt;&nbsp;<p></p>";
+                    }else{
+                        ihtml+="&nbsp;<p></p>";
+                    }//end if
+                }//end if
+            }//next
+            ihtml+="</td></tr></tbody></table></center>";
+
+            document.getElementById('list').innerHTML=ihtml;
+        }//
+    </script>
+    <script src="getid.js"></script>
+</BODY>
+</HTML>

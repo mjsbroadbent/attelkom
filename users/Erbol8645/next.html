@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webring - Next</title>
+</head>
+<body>
+    <script>
+        function activate() {
+            if (typeof urls === "undefined" || typeof id === "undefined") {
+                console.error("URLs or ID not initialized.");
+                return;
+            }
+
+            var targetURL = "";
+            var targetid = id;
+
+            // Find the next valid URL in the list
+            while (targetURL === "") {
+                targetid++;
+                if (targetid >= urls.length) targetid = 0; // Loop back to the start if at the end
+                targetURL = urls[targetid].trim(); // Trim whitespace from URLs
+            }
+
+            // Redirect to the target URL
+            location.href = targetURL;
+        }
+    </script>
+    <script src="getid.js"></script>
+</body>
+</html>

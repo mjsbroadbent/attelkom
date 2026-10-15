@@ -1,0 +1,17 @@
+<HTML><HEAD></HEAD>
+<BODY>
+    <script>
+        function activate() {
+            var targets=new Array();
+            for (var i=0;i<urls.length;i++){
+                if (i!=id && urls[i]!="") targets.push(i);
+            }//next
+
+            targetid=Math.floor(Math.random() * targets.length)
+
+            location.href=urls[targetid];
+        }//
+    </script>
+    <script src="getid.js"></script>
+</BODY>
+</HTML>
