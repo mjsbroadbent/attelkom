@@ -1,0 +1,19 @@
+Photo credits (Wikimedia Commons). Photos downscaled and recompressed.
+
+album/gateway.jpg
+  Original: File:Panorama of the Too Ashuu Pass, Kyrgyz Alatau, Kyrgyzstan 01.jpg
+  Author: Vilya Shoni
+  Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
+  Source: https://commons.wikimedia.org/wiki/File:Panorama_of_the_Too_Ashuu_Pass,_Kyrgyz_Alatau,_Kyrgyzstan_01.jpg
+
+album/tashkomur.jpg
+  Original: File:Tash Komur.jpg
+  Author: Jonbart
+  Licence: Public domain ()
+  Source: https://commons.wikimedia.org/wiki/File:Tash_Komur.jpg
+
+album/valley.jpg
+  Original: File:Ala-Bel pass, Kyrgyzstan (29561487947).jpg
+  Author: Ninara from Helsinki, Finland
+  Licence: CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
+  Source: https://commons.wikimedia.org/wiki/File:Ala-Bel_pass,_Kyrgyzstan_(29561487947).jpg
