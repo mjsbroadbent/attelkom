@@ -169,12 +169,12 @@ def page(rows):
                         f'<font face="Arial" size="2" color="#FFCC00"><b>&nbsp;{L}</b></font></td></tr>')
         bg = "#FFFFFF" if i % 2 else "#EEF5F0"
         on = r["status"] == "online"
-        icon = '<img src="/images/online.gif" width="62" height="15" alt="ONLINE">' if on else \
-               '<img src="/images/offline.gif" width="62" height="15" alt="OFFLINE">'
-        new = ' <img src="/images/new_dir.gif" width="28" height="11" alt="NEW!">' if r["updated"] >= "2004-01-01" and on else ""
+        icon = '<img src="../images/online.gif" width="62" height="15" alt="ONLINE">' if on else \
+               '<img src="../images/offline.gif" width="62" height="15" alt="OFFLINE">'
+        new = ' <img src="../images/new_dir.gif" width="28" height="11" alt="NEW!">' if r["updated"] >= "2004-01-01" and on else ""
         acct = html.escape(r["account"])
         title = html.escape(r["title"])
-        link = f'<a href="/users/{acct}/">{acct}</a>' if on else f'<a href="/users/{acct}/" class="dead">{acct}</a>'
+        link = f'<a href="{acct}/">{acct}</a>' if on else f'<a href="{acct}/" class="dead">{acct}</a>'
         body.append(
             f'<tr bgcolor="{bg}"><td align="center">{icon}</td>'
             f'<td><font face="Courier New,Courier" size="2"><b>{link}</b></font></td>'
@@ -188,7 +188,7 @@ def page(rows):
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <TITLE>MyPage@Attelkom - Member Directory</TITLE>
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
 <STYLE TYPE="text/css">
 <!--
 body {{ font-family: Arial, Helvetica, sans-serif; }}
@@ -200,7 +200,7 @@ a.dead {{ color: #808080; }}
 -->
 </STYLE>
 </HEAD>
-<BODY BGCOLOR="#FFFFFF" BACKGROUND="/images/horse_silhouettes_on_brown_background_seamless.jpg" TEXT="#000000">
+<BODY BGCOLOR="#FFFFFF" BACKGROUND="../images/horse_silhouettes_on_brown_background_seamless.jpg" TEXT="#000000">
 <div class="wrap">
 <div style="background:#FFFFFF">
 <div style="background:#003333;text-align:center;padding:8px">
@@ -210,7 +210,7 @@ a.dead {{ color: #808080; }}
 <div style="padding:8px">
 <P><FONT SIZE="2">Every Attelkom dial-up account comes with <B>10 MB</B> of free web space at
 <B>www.attelkom.com/users/<I>YourName1234</I>/</B>. Below are all member pages on our servers, sorted by account name.
-Pages marked <IMG SRC="/images/offline.gif" WIDTH="62" HEIGHT="15" ALT="OFFLINE" ALIGN="absmiddle"> are temporarily unavailable
+Pages marked <IMG SRC="../images/offline.gif" WIDTH="62" HEIGHT="15" ALT="OFFLINE" ALIGN="absmiddle"> are temporarily unavailable
 (account expired, unpaid or being moved to the new servers).</FONT></P>
 <P ALIGN="center"><FONT SIZE="2"><B>{online}</B> pages online &middot; <B>{len(rows) - online}</B> offline &middot; {len(rows)} members</FONT></P>
 <P ALIGN="center"><FONT FACE="Arial" SIZE="2"><B>{az}</B></FONT></P>
@@ -226,9 +226,9 @@ Pages marked <IMG SRC="/images/offline.gif" WIDTH="62" HEIGHT="15" ALT="OFFLINE"
 <P><FONT SIZE="2">Want your page listed? Log in to the <A HREF="http://members.attelkom.net/ums/main.php?r=0">Customer Control Panel</A>
 and tick <I>"List my page in the directory"</I>, or write to <A HREF="mailto:mypage@attelkom.net">mypage@attelkom.net</A>.</FONT></P>
 <HR>
-<P ALIGN="center"><FONT SIZE="1"><A HREF="/">Attelkom Online Home</A> | <A HREF="/users/Erbol8645/">Irad's biggest webring</A><BR>
+<P ALIGN="center"><FONT SIZE="1"><A HREF="../">Attelkom Online Home</A> | <A HREF="Erbol8645/">Irad's biggest webring</A><BR>
 &copy;1999-2004 Attelkom.net Irad Internet Services. Attelkom is not responsible for the content of member pages.</FONT></P>
-<P ALIGN="center"><IMG SRC="/images/ie.gif" WIDTH="88" HEIGHT="31" ALT="Best viewed with Internet Explorer"></P>
+<P ALIGN="center"><IMG SRC="../images/ie.gif" WIDTH="88" HEIGHT="31" ALT="Best viewed with Internet Explorer"></P>
 </div>
 </div>
 </div>
