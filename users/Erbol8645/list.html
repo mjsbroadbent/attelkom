@@ -6,7 +6,8 @@
             var ihtml="<center><br /><a href='.'>[webring home]</a><br /><br />participant list<br /><br /><table border='2px'><tbody><tr><td>";
             for (var i=0;i<urls.length;i++){
                 if (urls[i]!=""){
-                    ihtml+="&nbsp;" + (i+1) + " - <a href='" + urls[i] + "'>" + urls[i] + "</a>";
+                    var u = new URL(urls[i].trim(), location.href);
+                    ihtml+="&nbsp;" + (i+1) + " - <a href='" + u.href + "'>" + u.host + u.pathname + "</a>";
                     if (i==id){
                         ihtml+=" &lt;&lt;&nbsp;<p></p>";
                     }else{

@@ -19,7 +19,8 @@ function process() {
         var ref = document.referrer.replace(/[^/]*$/, '');
 
         for (var i = 0; i < urls.length; i++) {
-            if (urls[i] === ref || urls[i] + "/" === ref) {
+            var full = new URL(urls[i].trim(), location.href).href;  // list entries can be relative
+            if (full === ref || full + "/" === ref) {
                 id = i;
                 break;
             }
