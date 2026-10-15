@@ -1,0 +1,9 @@
+a			{ text-decoration: underline }
+A:hover		{ color:#FF0000; }
+body		{ font: bold 10pt Arial, Helvetica, sans-serif; color: #000000}
+p			{ font: bold 10pt Arial, Helvetica, sans-serif; color: #000000}
+.ghead		{ font: bold 10pt Arial, Helvetica, sans-serif; color: #006666}
+li			{ font: bold 10pt Arial, Helvetica, sans-serif; color: #000000}
+ul			{ font: bold 10pt Arial, Helvetica, sans-serif; color: #000000}
+.alpha		{ font: bold 10pt Arial, Helvetica, sans-serif; color: #FFCC00}
+.omega		{ font: bold 8pt Arial, Helvetica, sans-serif; color: #FF9900}
