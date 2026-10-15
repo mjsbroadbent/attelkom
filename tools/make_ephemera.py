@@ -119,7 +119,7 @@ def main():
     button(os.path.join(b, "iradi.gif"), "#b0001e", ["IRAD"], "#ffffff", ["Proudly", "Iradi!"])
     button(os.path.join(b, "nofrontpage.gif"), "#404040", ["NO"], "#e0e0e0", ["No frames", "No Java"])
     counter(os.path.join(IMG, "counter.gif"))
-    header(os.path.join(IMG, "header", "header2.jpg"))
+    # the header image (images/header/header2.jpg) is left missing on purpose: a broken image is part of the look
     spinning_globe(os.path.join(IMG, "globe.gif"))
     mailbox(os.path.join(IMG, "mail.gif"))
     print("done")
