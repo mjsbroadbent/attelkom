@@ -11,3 +11,6 @@ The deprecated 1999-era Attelkom Online site of the Irad worldbuilding project, 
 - Search engine and Internet Explorer links go to the Wayback Machine's December 1999 copies; the site's own dead links are relative, so they land on the 404 page.
 - `tools/morkhan3d.py` renders the spinning "CGI" Morkhan heads on the tüntolk fan page (users/Kanykei5093). Member-site photos added in October 2026 are FLUX renders made to look like 1999–2003 snapshots; the photos the pages themselves call broken ("photo coming soon", "my brother will scan it", a C:\My Documents path) are left missing on purpose.
 - Member pages show the 88×31 `images/hosted_attelkom.gif` button instead of the full-size logo. `tools/make_member_art.py` draws the Akyel Syndicate logo (users/Marat4086/logo.gif) and the KARA-BUURA cartoon goat (users/Bolot7720/goat.gif, goat_small.gif).
+
+## Secret page
+`noc/whitelist.html` is the Attelkom NOC's internal "resource list": every current Irad website with real links and an in-world filter status. It isn't linked from any menu; the only way in is the © sign in the front page footer, which is a hidden link. Add new sites to its table as they launch.
