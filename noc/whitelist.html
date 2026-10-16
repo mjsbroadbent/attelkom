@@ -24,6 +24,15 @@ th { text-align: left; background: #C0C0C0; }
 .bl { color: #CC0000; font-weight: bold; }
 .ex { color: #996600; font-weight: bold; }
 .hits { text-align: right; white-space: nowrap; }
+.net { white-space: nowrap; font-weight: bold; }
+.up { color: #008000; } .slow { color: #996600; } .down { color: #CC0000; }
+.panel { margin-top: 14px; }
+.panel h3 { font-size: 13px; margin: 0; padding: 3px 5px; background: #003333; color: #FFCC00; }
+.panel table { width: 100%; }
+.stale { color: #CC0000; font-weight: bold; }
+.panel td:nth-child(2), .panel td:nth-child(3) { white-space: nowrap; }
+#adpanel { white-space: pre-wrap; }
+.mono { white-space: pre-wrap; }
 .sec { background: #003333; color: #FFCC00; font-weight: bold; }
 -->
 </STYLE>
@@ -45,42 +54,89 @@ Last update: 16.10.2026 by r.kurmanov    (previous: 16.10.2026)
 
 <div class="scroll">
 <TABLE BORDER="1" CELLSPACING="0" CELLPADDING="3" WIDTH="100%">
-<TR><TH>#</TH><TH>HOST</TH><TH>WHAT IT IS</TH><TH>HITS*</TH><TH>STATUS</TH></TR>
+<TR><TH>#</TH><TH>HOST</TH><TH>WHAT IT IS</TH><TH>HITS*</TH><TH>NET</TH><TH>STATUS</TH></TR>
 
-<TR><TD COLSPAN="5" CLASS="sec">ATTELKOM OWN RESOURCES</TD></TR>
-<TR><TD>01</TD><TD><A HREF="https://attelkom.net/">attelkom.net</A></TD><TD>Attelkom corporate site (WebStudio Talas template, 2019)</TD><TD CLASS="hits" DATA-GC="attelkom.net/ attelkom.net/index.html">...</TD><TD CLASS="ok">OK</TD></TR>
-<TR><TD>02</TD><TD><A HREF="../index.html">www.attelkom.net</A></TD><TD>Attelkom Online, old 1999 site. "www" record still points to the old server. Ticket #4471 open since 2019.</TD><TD CLASS="hits" DATA-GC="www.attelkom.net/ www.attelkom.net/index.html wwv.attelkom.net/ wwv.attelkom.net/index.html">...</TD><TD CLASS="ex">OLD SERVER</TD></TR>
-<TR><TD>03</TD><TD><A HREF="../users/">www.attelkom.net/users/</A></TD><TD>MyPage@Attelkom member pages (dial-up era). Nobody has deleted them.</TD><TD CLASS="hits" DATA-GC="www.attelkom.net/users/ www.attelkom.net/users/index.html wwv.attelkom.net/users/ wwv.attelkom.net/users/index.html">...</TD><TD CLASS="ex">OLD SERVER</TD></TR>
-<TR><TD>04</TD><TD><A HREF="https://maps.attelkom.net/">maps.attelkom.net</A></TD><TD>Attelkom Maps (Kartalar). ISEZ subscribers only.</TD><TD CLASS="hits" DATA-GC="maps.attelkom.net/ maps.attelkom.net/index.html">...</TD><TD CLASS="ok">OK</TD></TR>
-<TR><TD>05</TD><TD><A HREF="https://ads.attelkom.net/">ads.attelkom.net</A></TD><TD>Attelkom Jarnama advertising network, banner server for all national sites</TD><TD CLASS="hits" DATA-GC="ads.attelkom.net/ ads.attelkom.net/index.html">...</TD><TD CLASS="ok">OK</TD></TR>
+<TR><TD COLSPAN="6" CLASS="sec">ATTELKOM OWN RESOURCES</TD></TR>
+<TR><TD>01</TD><TD><A HREF="https://attelkom.net/">attelkom.net</A></TD><TD>Attelkom corporate site (WebStudio Talas template, 2019)</TD><TD CLASS="hits" DATA-GC="attelkom.net/ attelkom.net/index.html">...</TD><TD CLASS="net" DATA-PING="https://attelkom.net/">..</TD><TD CLASS="ok">OK</TD></TR>
+<TR><TD>02</TD><TD><A HREF="../index.html">www.attelkom.net</A></TD><TD>Attelkom Online, old 1999 site. "www" record still points to the old server. Ticket #4471 open since 2019.</TD><TD CLASS="hits" DATA-GC="www.attelkom.net/ www.attelkom.net/index.html wwv.attelkom.net/ wwv.attelkom.net/index.html">...</TD><TD CLASS="net" DATA-PING="../index.html">..</TD><TD CLASS="ex">OLD SERVER</TD></TR>
+<TR><TD>03</TD><TD><A HREF="../users/">www.attelkom.net/users/</A></TD><TD>MyPage@Attelkom member pages (dial-up era). Nobody has deleted them.</TD><TD CLASS="hits" DATA-GC="www.attelkom.net/users/ www.attelkom.net/users/index.html wwv.attelkom.net/users/ wwv.attelkom.net/users/index.html">...</TD><TD CLASS="net" DATA-PING="../users/">..</TD><TD CLASS="ex">OLD SERVER</TD></TR>
+<TR><TD>04</TD><TD><A HREF="https://maps.attelkom.net/">maps.attelkom.net</A></TD><TD>Attelkom Maps (Kartalar). ISEZ subscribers only.</TD><TD CLASS="hits" DATA-GC="maps.attelkom.net/ maps.attelkom.net/index.html">...</TD><TD CLASS="net" DATA-PING="https://maps.attelkom.net/">..</TD><TD CLASS="ok">OK</TD></TR>
+<TR><TD>05</TD><TD><A HREF="https://ads.attelkom.net/">ads.attelkom.net</A></TD><TD>Attelkom Jarnama advertising network, banner server for all national sites</TD><TD CLASS="hits" DATA-GC="ads.attelkom.net/ ads.attelkom.net/index.html">...</TD><TD CLASS="net" DATA-PING="https://ads.attelkom.net/">..</TD><TD CLASS="ok">OK</TD></TR>
 
-<TR><TD COLSPAN="5" CLASS="sec">MEDIA</TD></TR>
-<TR><TD>06</TD><TD><A HREF="https://iradone.com/">iradone.com</A></TD><TD>IradOne Online, state broadcaster</TD><TD CLASS="hits" DATA-GC="iradone.com/ iradone.com/index.html">...</TD><TD CLASS="ok">OK</TD></TR>
-<TR><TD>07</TD><TD><A HREF="https://talasherald.com/">talasherald.com</A></TD><TD>The Talas Herald, English-language daily</TD><TD CLASS="hits" DATA-GC="talasherald.com/ talasherald.com/index.html">...</TD><TD CLASS="ok">OK</TD></TR>
+<TR><TD COLSPAN="6" CLASS="sec">MEDIA</TD></TR>
+<TR><TD>06</TD><TD><A HREF="https://iradone.com/">iradone.com</A></TD><TD>IradOne Online, state broadcaster</TD><TD CLASS="hits" DATA-GC="iradone.com/ iradone.com/index.html">...</TD><TD CLASS="net" DATA-PING="https://iradone.com/">..</TD><TD CLASS="ok">OK</TD></TR>
+<TR><TD>07</TD><TD><A HREF="https://talasherald.com/">talasherald.com</A></TD><TD>The Talas Herald, English-language daily</TD><TD CLASS="hits" DATA-GC="talasherald.com/ talasherald.com/index.html">...</TD><TD CLASS="net" DATA-PING="https://talasherald.com/">..</TD><TD CLASS="ok">OK</TD></TR>
 
-<TR><TD COLSPAN="5" CLASS="sec">REFERENCE / CULTURE</TD></TR>
-<TR><TD>08</TD><TD><A HREF="https://irad.wiki/">irad.wiki</A></TD><TD>Irad Wiki, the free encyclopedia. Editors abroad; articles on the Governor reviewed by DPI weekly.</TD><TD CLASS="hits" DATA-GC="irad.wiki/ irad.wiki/index.html">...</TD><TD CLASS="ok">OK</TD></TR>
-<TR><TD>09</TD><TD><A HREF="https://iradpalaceof.art/">iradpalaceof.art</A></TD><TD>Irad Palace of Art, Iyık Janyl</TD><TD CLASS="hits" DATA-GC="iradpalaceof.art/ iradpalaceof.art/index.html">...</TD><TD CLASS="ok">OK</TD></TR>
-<TR><TD>10</TD><TD><A HREF="https://iradfilmsociety.neocities.org/">iradfilmsociety.neocities.org</A></TD><TD>Irad Film Society. Foreign host, slow from Talas.</TD><TD CLASS="hits" DATA-GC="iradfilmsociety.neocities.org/ iradfilmsociety.neocities.org/index.html">...</TD><TD CLASS="ex">FOREIGN HOST</TD></TR>
+<TR><TD COLSPAN="6" CLASS="sec">REFERENCE / CULTURE</TD></TR>
+<TR><TD>08</TD><TD><A HREF="https://irad.wiki/">irad.wiki</A></TD><TD>Irad Wiki, the free encyclopedia. Editors abroad; articles on the Governor reviewed by DPI weekly.</TD><TD CLASS="hits" DATA-GC="irad.wiki/ irad.wiki/index.html">...</TD><TD CLASS="net" DATA-PING="https://irad.wiki/">..</TD><TD CLASS="ok">OK</TD></TR>
+<TR><TD>09</TD><TD><A HREF="https://iradpalaceof.art/">iradpalaceof.art</A></TD><TD>Irad Palace of Art, Iyık Janyl</TD><TD CLASS="hits" DATA-GC="iradpalaceof.art/ iradpalaceof.art/index.html">...</TD><TD CLASS="net" DATA-PING="https://iradpalaceof.art/">..</TD><TD CLASS="ok">OK</TD></TR>
+<TR><TD>10</TD><TD><A HREF="https://iradfilmsociety.neocities.org/">iradfilmsociety.neocities.org</A></TD><TD>Irad Film Society. Foreign host, slow from Talas.</TD><TD CLASS="hits" DATA-GC="iradfilmsociety.neocities.org/ iradfilmsociety.neocities.org/index.html">...</TD><TD CLASS="net" DATA-PING="https://iradfilmsociety.neocities.org/">..</TD><TD CLASS="ex">FOREIGN HOST</TD></TR>
 
-<TR><TD>11</TD><TD><A HREF="https://kublesoft.net/">kublesoft.net</A></TD><TD>Kuble Soft, Talas games and school software (closed 2007). Old site kept up by former staff since 2008; was kuble.ir.ad.</TD><TD CLASS="hits" DATA-GC="kublesoft.net/ kublesoft.net/index.html">...</TD><TD CLASS="ok">OK</TD></TR>
-<TR><TD>12</TD><TD><A HREF="https://spisio.github.io/dastorkon/">Jibek's Dastorkon</A></TD><TD>Home cooking blog, Jibek Sooronbai kyzy (from Orto-Ayyl, in Chicago since 2009). Foreign host, diaspora.</TD><TD CLASS="hits" DATA-GC="spisio.github.io/dastorkon/ spisio.github.io/dastorkon/index.html">...</TD><TD CLASS="ex">FOREIGN HOST</TD></TR>
-<TR><TD>22</TD><TD><A HREF="https://steppecrawl.online/">steppecrawl.online</A></TD><TD>Steppe Crawl, browser game (dungeon crawl on the Qara-Chik road to Manas Peak). Was on a github.io address. Public scoreboard posts player names. Traffic from internet clubs after school hours.</TD><TD CLASS="hits" DATA-GC="steppecrawl.online/ steppecrawl.online/index.html">...</TD><TD CLASS="ok">OK</TD></TR>
-<TR><TD COLSPAN="5" CLASS="sec">EDUCATION</TD></TR>
-<TR><TD>13</TD><TD><A HREF="https://talasuniversity.org/">talasuniversity.org</A></TD><TD>Talas State University portal and National Library of Irad (digital archive opened 15.10.2026). University IT dept says the PDFs are "approved by the rector". DPI informed.</TD><TD CLASS="hits" DATA-GC="talasuniversity.org/ talasuniversity.org/index.html">...</TD><TD CLASS="ok">OK</TD></TR>
-<TR><TD>14</TD><TD><A HREF="https://arshakitep.com/">arshakitep.com</A></TD><TD>Arsha Books, small Talas publisher (Köhne Diz). Moved off foreign hosting to its own .com 10.2026. DPI registration suspended 2024 after the October 2023 anthology. Books readable online. Not blocked (yet). Monitor.</TD><TD CLASS="hits" DATA-GC="arshakitep.com/ arshakitep.com/index.html">...</TD><TD CLASS="ok">OK</TD></TR>
-<TR><TD COLSPAN="5" CLASS="sec">COMMERCE</TD></TR>
-<TR><TD>15</TD><TD><A HREF="https://jilmay.com/">jilmay.com</A></TD><TD>Jilmay classifieds and Jilmay Cargo (Bishkek warehouse). Login problems are NOT our routing, whatever they tell customers.</TD><TD CLASS="hits" DATA-GC="jilmay.com/ jilmay.com/index.html">...</TD><TD CLASS="ok">OK</TD></TR>
-<TR><TD>16</TD><TD><A HREF="https://tulparapp.com/">tulparapp.com</A></TD><TD>Tulpar app site (US company, foreign hosting). App traffic NOT to be blocked (see 2023). Tulparcoin pages blocked 08.10.2026 on DPI instruction.</TD><TD CLASS="hits" DATA-GC="tulparapp.com/ tulparapp.com/index.html">...</TD><TD CLASS="ex">PARTIAL</TD></TR>
-<TR><TD>20</TD><TD><A HREF="https://jarysh.com/">jarysh.com</A></TD><TD>Jarysh, ulak scores and Ulak Nights tickets (Baisalov, Hippodrome concession). Saturday-night traffic spike, mostly the girls page. Betting subdomain blocked, main site OK per DPI ("information only"). Casino banner ads are NOT our problem, refer to the Directorate.</TD><TD CLASS="hits" DATA-GC="jarysh.com/ jarysh.com/index.html">...</TD><TD CLASS="ok">OK</TD></TR>
+<TR><TD>11</TD><TD><A HREF="https://kublesoft.net/">kublesoft.net</A></TD><TD>Kuble Soft, Talas games and school software (closed 2007). Old site kept up by former staff since 2008; was kuble.ir.ad.</TD><TD CLASS="hits" DATA-GC="kublesoft.net/ kublesoft.net/index.html">...</TD><TD CLASS="net" DATA-PING="https://kublesoft.net/">..</TD><TD CLASS="ok">OK</TD></TR>
+<TR><TD>12</TD><TD><A HREF="https://spisio.github.io/dastorkon/">Jibek's Dastorkon</A></TD><TD>Home cooking blog, Jibek Sooronbai kyzy (from Orto-Ayyl, in Chicago since 2009). Foreign host, diaspora.</TD><TD CLASS="hits" DATA-GC="spisio.github.io/dastorkon/ spisio.github.io/dastorkon/index.html">...</TD><TD CLASS="net" DATA-PING="https://spisio.github.io/dastorkon/">..</TD><TD CLASS="ex">FOREIGN HOST</TD></TR>
+<TR><TD>22</TD><TD><A HREF="https://steppecrawl.online/">steppecrawl.online</A></TD><TD>Steppe Crawl, browser game (dungeon crawl on the Qara-Chik road to Manas Peak). Was on a github.io address. Public scoreboard posts player names. Traffic from internet clubs after school hours.</TD><TD CLASS="hits" DATA-GC="steppecrawl.online/ steppecrawl.online/index.html">...</TD><TD CLASS="net" DATA-PING="https://steppecrawl.online/">..</TD><TD CLASS="ok">OK</TD></TR>
+<TR><TD COLSPAN="6" CLASS="sec">EDUCATION</TD></TR>
+<TR><TD>13</TD><TD><A HREF="https://talasuniversity.org/">talasuniversity.org</A></TD><TD>Talas State University portal and National Library of Irad (digital archive opened 15.10.2026). University IT dept says the PDFs are "approved by the rector". DPI informed.</TD><TD CLASS="hits" DATA-GC="talasuniversity.org/ talasuniversity.org/index.html">...</TD><TD CLASS="net" DATA-PING="https://talasuniversity.org/">..</TD><TD CLASS="ok">OK</TD></TR>
+<TR><TD>14</TD><TD><A HREF="https://arshakitep.com/">arshakitep.com</A></TD><TD>Arsha Books, small Talas publisher (Köhne Diz). Moved off foreign hosting to its own .com 10.2026. DPI registration suspended 2024 after the October 2023 anthology. Books readable online. Not blocked (yet). Monitor.</TD><TD CLASS="hits" DATA-GC="arshakitep.com/ arshakitep.com/index.html">...</TD><TD CLASS="net" DATA-PING="https://arshakitep.com/">..</TD><TD CLASS="ok">OK</TD></TR>
+<TR><TD COLSPAN="6" CLASS="sec">COMMERCE</TD></TR>
+<TR><TD>15</TD><TD><A HREF="https://jilmay.com/">jilmay.com</A></TD><TD>Jilmay classifieds and Jilmay Cargo (Bishkek warehouse). Login problems are NOT our routing, whatever they tell customers.</TD><TD CLASS="hits" DATA-GC="jilmay.com/ jilmay.com/index.html">...</TD><TD CLASS="net" DATA-PING="https://jilmay.com/">..</TD><TD CLASS="ok">OK</TD></TR>
+<TR><TD>16</TD><TD><A HREF="https://tulparapp.com/">tulparapp.com</A></TD><TD>Tulpar app site (US company, foreign hosting). App traffic NOT to be blocked (see 2023). Tulparcoin pages blocked 08.10.2026 on DPI instruction.</TD><TD CLASS="hits" DATA-GC="tulparapp.com/ tulparapp.com/index.html">...</TD><TD CLASS="net" DATA-PING="https://tulparapp.com/">..</TD><TD CLASS="ex">PARTIAL</TD></TR>
+<TR><TD>20</TD><TD><A HREF="https://jarysh.com/">jarysh.com</A></TD><TD>Jarysh, ulak scores and Ulak Nights tickets (Baisalov, Hippodrome concession). Saturday-night traffic spike, mostly the girls page. Betting subdomain blocked, main site OK per DPI ("information only"). Casino banner ads are NOT our problem, refer to the Directorate.</TD><TD CLASS="hits" DATA-GC="jarysh.com/ jarysh.com/index.html">...</TD><TD CLASS="net" DATA-PING="https://jarysh.com/">..</TD><TD CLASS="ok">OK</TD></TR>
 
-<TR><TD>19</TD><TD><A HREF="https://mjsbroadbent.github.io/churchofsaintjanyl/">Church of St. Janyl</A></TD><TD>Cathedral / Archeparchy of Iyik Janyl web office. Foreign host (US). Feast week 24.08 traffic x40, do NOT throttle (Directive 4, item 9: church sites).</TD><TD CLASS="hits" DATA-GC="mjsbroadbent.github.io/churchofsaintjanyl/ mjsbroadbent.github.io/churchofsaintjanyl/index.html">...</TD><TD CLASS="ex">FOREIGN HOST</TD></TR>
-<TR><TD COLSPAN="5" CLASS="sec">BLOCKED</TD></TR>
-<TR><TD>17</TD><TD><A HREF="https://freeirad.org/">freeirad.org</A></TD><TD>Opposition site, offshore. On the list since 11.2012. Mirrors appear weekly. Do not discuss on the open channel.</TD><TD CLASS="hits" DATA-GC="freeirad.org/ freeirad.org/index.html">...</TD><TD CLASS="bl">BLOCKED</TD></TR>
-<TR><TD>18</TD><TD><A HREF="https://mjsbroadbent.github.io/IradTimes/">Irad Times</A></TD><TD>Irad Times weekly (Printers' Lane). Site hosted in USA by "Friends of the Irad Times", Chicago, so no takedown possible, filter only. Previous: 03-05.2013, 11-12.2015, 10-11.2023, 02-03.2025. Re-listed 15.10.2026 21:00 on DPI instruction. Callers: "unavailable for technical reasons". Print edition is NOT our business.</TD><TD CLASS="hits" DATA-GC="mjsbroadbent.github.io/IradTimes/ mjsbroadbent.github.io/IradTimes/index.html">...</TD><TD CLASS="bl">BLOCKED</TD></TR>
-<TR><TD>21</TD><TD>bet.jarysh.com</TD><TD>Jarysh betting front for Steppe Gaming N.V. (Curaçao). Blocked 11.2023 under the Gaming and Lotteries Act 2011. Redirect domains change monthly; add as the Directorate sends them.</TD><TD CLASS="hits">-</TD><TD CLASS="bl">BLOCKED</TD></TR>
+<TR><TD>19</TD><TD><A HREF="https://mjsbroadbent.github.io/churchofsaintjanyl/">Church of St. Janyl</A></TD><TD>Cathedral / Archeparchy of Iyik Janyl web office. Foreign host (US). Feast week 24.08 traffic x40, do NOT throttle (Directive 4, item 9: church sites).</TD><TD CLASS="hits" DATA-GC="mjsbroadbent.github.io/churchofsaintjanyl/ mjsbroadbent.github.io/churchofsaintjanyl/index.html">...</TD><TD CLASS="net" DATA-PING="https://mjsbroadbent.github.io/churchofsaintjanyl/">..</TD><TD CLASS="ex">FOREIGN HOST</TD></TR>
+<TR><TD COLSPAN="6" CLASS="sec">BLOCKED</TD></TR>
+<TR><TD>17</TD><TD><A HREF="https://freeirad.org/">freeirad.org</A></TD><TD>Opposition site, offshore. On the list since 11.2012. Mirrors appear weekly. Do not discuss on the open channel.</TD><TD CLASS="hits" DATA-GC="freeirad.org/ freeirad.org/index.html">...</TD><TD CLASS="net" DATA-PING="https://freeirad.org/">..</TD><TD CLASS="bl">BLOCKED</TD></TR>
+<TR><TD>18</TD><TD><A HREF="https://mjsbroadbent.github.io/IradTimes/">Irad Times</A></TD><TD>Irad Times weekly (Printers' Lane). Site hosted in USA by "Friends of the Irad Times", Chicago, so no takedown possible, filter only. Previous: 03-05.2013, 11-12.2015, 10-11.2023, 02-03.2025. Re-listed 15.10.2026 21:00 on DPI instruction. Callers: "unavailable for technical reasons". Print edition is NOT our business.</TD><TD CLASS="hits" DATA-GC="mjsbroadbent.github.io/IradTimes/ mjsbroadbent.github.io/IradTimes/index.html">...</TD><TD CLASS="net" DATA-PING="https://mjsbroadbent.github.io/IradTimes/">..</TD><TD CLASS="bl">BLOCKED</TD></TR>
+<TR><TD>21</TD><TD>bet.jarysh.com</TD><TD>Jarysh betting front for Steppe Gaming N.V. (Curaçao). Blocked 11.2023 under the Gaming and Lotteries Act 2011. Redirect domains change monthly; add as the Directorate sends them.</TD><TD CLASS="hits">-</TD><TD CLASS="net">-</TD><TD CLASS="bl">BLOCKED</TD></TR>
 </TABLE>
 </div>
+
+<div class="panel"><h3>NEWSROOM FEEDS (last item published)</h3>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="3" WIDTH="100%">
+<TR><TH>HOST</TH><TH>LAST</TH><TH>AGE</TH><TH>ITEM</TH></TR>
+<TR DATA-FEED="herald"><TD>talasherald.com</TD><TD>..</TD><TD>..</TD><TD>..</TD></TR>
+<TR DATA-FEED="iradone"><TD>iradone.com</TD><TD>..</TD><TD>..</TD><TD>..</TD></TR>
+<TR DATA-FEED="times"><TD>Irad Times</TD><TD>..</TD><TD>..</TD><TD>..</TD></TR>
+<TR DATA-FEED="wiki"><TD>irad.wiki</TD><TD>..</TD><TD>..</TD><TD>..</TD></TR>
+<TR DATA-FEED="church"><TD>Church of St. Janyl</TD><TD>..</TD><TD>..</TD><TD>..</TD></TR>
+<TR DATA-FEED="jarysh"><TD>jarysh.com</TD><TD>..</TD><TD>..</TD><TD>..</TD></TR>
+</TABLE>
+<PRE>Herald: Mon-Sat, stale after 2 days. IradOne: stale after 4 days.</PRE></div>
+
+<div class="panel"><h3>JARNAMA AD SERVER (ads.attelkom.net)</h3>
+<PRE ID="adpanel">loading campaigns.json ...</PRE></div>
+
+<div class="panel"><h3>FILTER LOG</h3>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="3" WIDTH="100%">
+<TR><TH>DATE</TH><TH>EVENT</TH></TR>
+<TR><TD>2008</TD><TD>Security Directive No. 4. Monitoring gateways fitted on all international links. Foreign data-centre ranges refused ("hostile monitoring").</TD></TR>
+<TR><TD>2009</TD><TD>Foreign search crawlers can no longer reach ISEZ hosts. .ir.ad and id.gov sites drop out of foreign search (first "disappearance").</TD></TR>
+<TR><TD>12.2011</TD><TD>Gateway rule loosened after the TSU measurements in the Herald. Sites back in foreign search during 2012.</TD></TR>
+<TR><TD>11.2012</TD><TD>freeirad.org listed on DPI instruction.</TD></TR>
+<TR><TD>09.03.2013</TD><TD>Irad Times listed (registration suspension). Lifted 14.05.2013.</TD></TR>
+<TR><TD>2013-2014</TD><TD>Reseller scheme sells .ir.ad names without the document check. Casino, pill and loan spam on the zone.</TD></TR>
+<TR><TD>2015</TD><TD>Foreign search engines demote the whole .ir.ad zone as spam (second "disappearance"). Outlets move to .com.</TD></TR>
+<TR><TD>11.2015</TD><TD>Irad Times listed (ballot disqualification reports). Lifted 12.2015.</TD></TR>
+<TR><TD>2017-2019</TD><TD>No new .ir.ad names from 2017. Zone lapsed 2019. Old links dead.</TD></TR>
+<TR><TD>10.2023</TD><TD>Student protests: data cut. Gateways in "national segment" mode, foreign traffic gets the technical-work page. Foreign platforms throttled. Tulpar NOT on the list. Irad Times listed 10-11.2023.</TD></TR>
+<TR><TD>11.2023</TD><TD>bet.jarysh.com listed (Gaming and Lotteries Act 2011, Directorate request).</TD></TR>
+<TR><TD>2024</TD><TD>Exile sites listed. "National segment" mode never fully off: Irad invisible in foreign search (third "disappearance", the long one).</TD></TR>
+<TR><TD>02.2025</TD><TD>Irad Times listed after the US remarks demonstrations. Lifted 03.2025.</TD></TR>
+<TR><TD>06.2026</TD><TD>New international gateway equipment ("network modernisation"). Domain-list filtering only. Iradi sites back in foreign search 07-08.2026.</TD></TR>
+<TR><TD>08.10.2026</TD><TD>tulparapp.com Tulparcoin pages listed on DPI instruction. App traffic untouched.</TD></TR>
+<TR><TD>15.10.2026 21:00</TD><TD>Irad Times re-listed (Sary-Bulak issue).</TD></TR>
+</TABLE></div>
+
+<div class="panel"><h3>OPEN TICKETS</h3>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="3" WIDTH="100%">
+<TR><TH>#</TH><TH>OPENED</TH><TH>SUBJECT</TH><TH>STATE</TH></TR>
+<TR><TD>4471</TD><TD>03.2019</TD><TD>"www" still on the old server. Do not change without management (see notes).</TD><TD CLASS="ex">HOLD</TD></TR>
+<TR><TD>6512</TD><TD>08.10.2026</TD><TD>Tulparcoin mirrors appearing on new paths. DPI sends updates daily. Do NOT touch app traffic.</TD><TD CLASS="ex">OPEN</TD></TR>
+<TR><TD>6588</TD><TD>16.10.2026</TD><TD>Gateway counters missing on foreign hosts: freeirad.org, iradfilmsociety, kublesoft.net, arshakitep.com, Jibek's Dastorkon. HITS shows "-".</TD><TD CLASS="ex">OPEN</TD></TR>
+<TR><TD>6601</TD><TD>16.10.2026</TD><TD>Church of St. Janyl to move off foreign hosting to its own domain. Update this list and the map link when it moves.</TD><TD CLASS="ex">WAITING</TD></TR>
+<TR><TD>6602</TD><TD>16.10.2026</TD><TD>Friends of the Irad Times registering a new domain. Re-list the new host on DPI instruction when it appears.</TD><TD CLASS="ex">WAITING</TD></TR>
+<TR><TD>6610</TD><TD>16.10.2026</TD><TD>arshakitep.com: DPI "monitor" since the 2024 suspension. No instruction yet.</TD><TD CLASS="ex">MONITOR</TD></TR>
+</TABLE></div>
 
 <PRE>
 -----------------------------------------------------------------
@@ -92,6 +148,7 @@ NOTES
 - This page is not linked from anywhere. Keep it that way.
 - * HITS = front page views counted at the gateway. Counters
   refresh every 4 hours. "-" = no counter on that host.
+- NET = reachability from this console (UP / SLOW over 2.5 s / DOWN).
 -----------------------------------------------------------------
 </PRE>
 <P><FONT SIZE="1"><A HREF="../index.html">back</A></FONT></P>
@@ -114,6 +171,62 @@ NOTES
     });
   });
   get("TOTAL").then(function (n) { document.getElementById("gctotal").textContent = n === null ? "n/a" : fmt(n); });
+})();
+</SCRIPT>
+<SCRIPT TYPE="text/javascript">
+// NET: reachability; FEEDS: latest item per newsroom; ADS: Jarnama inventory
+(function () {
+  function timeout(ms) { return new Promise(function (_, rej) { setTimeout(function () { rej("timeout"); }, ms); }); }
+  Array.prototype.forEach.call(document.querySelectorAll("td[data-ping]"), function (td) {
+    var t0 = Date.now(), url = td.getAttribute("data-ping");
+    Promise.race([fetch(url, { mode: "no-cors", cache: "no-store" }), timeout(8000)]).then(function () {
+      var ms = Date.now() - t0;
+      td.textContent = ms > 2500 ? "SLOW" : "UP"; td.className = "net " + (ms > 2500 ? "slow" : "up"); td.title = ms + " ms";
+    }, function () { td.textContent = "DOWN"; td.className = "net down"; });
+  });
+  function d2(n) { return (n < 10 ? "0" : "") + n; }
+  function fmt(d) { d = new Date(d.getTime() + 6 * 36e5); return d2(d.getUTCDate()) + "." + d2(d.getUTCMonth() + 1) + "." + d.getUTCFullYear(); } // Irad Time (UTC+6)
+  function age(d) { var h = (Date.now() - d.getTime()) / 36e5; return h < 48 ? Math.round(h) + " h" : Math.round(h / 24) + " d"; }
+  function setRow(id, date, item, staleDays) {
+    var tr = document.querySelector('tr[data-feed="' + id + '"]'); if (!tr) return;
+    var c = tr.cells;
+    if (!date) { c[1].textContent = "n/a"; c[2].textContent = "-"; c[3].textContent = item || "no feed"; return; }
+    c[1].textContent = fmt(date); c[2].textContent = age(date); c[3].textContent = item || "";
+    if (staleDays && Date.now() - date.getTime() > staleDays * 864e5) { c[2].className = "stale"; c[2].textContent += " STALE"; }
+  }
+  function text(u) { return fetch(u, { cache: "no-store" }).then(function (r) { if (!r.ok) throw r.status; return r.text(); }); }
+  function sitemap(id, u, label) {
+    text(u).then(function (x) {
+      var m = x.match(/<lastmod>([^<]+)<\/lastmod>/g) || [], n = (x.match(/<loc>/g) || []).length, best = "";
+      m.forEach(function (t) { t = t.replace(/<\/?lastmod>/g, ""); if (t > best) best = t; });
+      setRow(id, best ? new Date(best) : null, (label ? label.replace("%n", n) : n + " pages") + " (sitemap)");
+    }).catch(function () { setRow(id, null, "unreachable"); });
+  }
+  text("https://talasherald.com/feed.xml").then(function (x) {
+    var d = (x.match(/<pubDate>([^<]+)<\/pubDate>/) || [])[1], t = (x.match(/<item>\s*<title>([^<]+)<\/title>/) || [])[1];
+    var el = document.createElement("textarea"); el.innerHTML = t || ""; setRow("herald", d ? new Date(d) : null, el.value, 2);
+  }).catch(function () { setRow("herald", null, "unreachable"); });
+  fetch("https://iradone.com/news/index.json", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (a) {
+    a.sort(function (x, y) { return (y.published || "").localeCompare(x.published || ""); });
+    setRow("iradone", a[0] && a[0].published ? new Date(a[0].published) : null, a[0] ? a[0].headline : "", 4);
+  }).catch(function () { setRow("iradone", null, "unreachable"); });
+  sitemap("times", "https://mjsbroadbent.github.io/IradTimes/sitemap.xml");
+  sitemap("wiki", "https://irad.wiki/sitemap.xml", "%n articles and pages");
+  sitemap("church", "https://mjsbroadbent.github.io/churchofsaintjanyl/sitemap.xml");
+  sitemap("jarysh", "https://jarysh.com/sitemap.xml");
+  fetch("https://ads.attelkom.net/campaigns.json", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
+    var ads = d.ads || [], today = new Date().toISOString().slice(0, 10), soon = new Date(Date.now() + 30 * 864e5).toISOString().slice(0, 10);
+    var live = ads.filter(function (a) { return a.active !== false && (!a.start || a.start <= today) && (!a.end || a.end >= today); });
+    var sched = ads.filter(function (a) { return a.active !== false && a.start && a.start > today; });
+    var exp = live.filter(function (a) { return a.end && a.end <= soon; });
+    var by = {}; live.forEach(function (a) { (a.themes || []).forEach(function (t) { by[t] = (by[t] || 0) + 1; }); });
+    var adv = {}; live.forEach(function (a) { adv[a.advertiser] = 1; });
+    var out = "Campaigns on file : " + ads.length + "\nServing today     : " + live.length + " (" + Object.keys(adv).length + " advertisers)\n" +
+      "Scheduled         : " + sched.length + "\nExpiring <= 30 d  : " + exp.length +
+      (exp.length ? "\n" + exp.map(function (a) { return "  " + a.end + "  " + a.advertiser + " (" + a.size + ")"; }).join("\n") : "") +
+      "\nBy theme          : " + Object.keys(by).sort().map(function (k) { return k + " " + by[k]; }).join(" | ");
+    document.getElementById("adpanel").textContent = out;
+  }).catch(function () { document.getElementById("adpanel").textContent = "ad server unreachable"; });
 })();
 </SCRIPT>
 </BODY>
