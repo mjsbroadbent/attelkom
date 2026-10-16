@@ -4,7 +4,7 @@ The deprecated 1999-era Attelkom Online site of the Irad worldbuilding project, 
 
 - `users/` holds the MyPage@Attelkom member home pages, one folder per account in the `Name1234` format (`users/Erbol8645/` and so on).
 - `users/index.html` is the member directory: the real pages are listed as online, and over a hundred made-up accounts as offline. It is built by `python3 tools/make_directory.py`, which also draws the status icons (`images/online.gif`, `images/offline.gif`, `images/new_dir.gif`). The made-up accounts are in `tools/accounts.json`, one per line. Add a member site by creating its folder and running the script again.
-- `users/Erbol8645/urls.txt` is the "Irad's biggest webring" member list; each site's prev/next links use its position (`?id=`) in that list.
+- `users/Erbol8645/urls.txt` is the "Irad's biggest webring" member list; each site's prev/next links use its position (`?id=`) in that list. The ring's button is `users/Erbol8645/webring.gif` (the 88×31 Jarnama/Irad100 badge). Asel3317 (St. Tomas Youth Group) left the ring in 2003 over the other members' content; when removing a site, renumber the `?id=` of every site after it.
 - Links inside the site are relative, so it works both at mjsbroadbent.github.io/attelkom/ and at the root of www.attelkom.net.
 - `404.html` (GitHub Pages) and `not_found.html` (Neocities) are the same old-Apache "Not Found" page, pointing lost visitors to the directory.
 - `tools/make_ephemera.py` draws the 1999 front-page extras: the 88×31 buttons in `images/badges/`, the visitor counter, the spinning globe, the guestbook mailbox. Several images (the header, footer slices, a few buttons) are missing on purpose, as on a real abandoned site. The top banner and one footer button are live Attelkom Jarnama ads (dial-up era).
@@ -14,3 +14,4 @@ The deprecated 1999-era Attelkom Online site of the Irad worldbuilding project, 
 
 ## Secret page
 `noc/whitelist.html` is the Attelkom NOC's internal "resource list": every current Irad website with real links and an in-world filter status. It isn't linked from any menu; the only way in is the © sign in the front page footer, which is a hidden link. Add new sites to its table as they launch.
+- `python3 tools/add_banners.py` puts the free-hosting banner (a 468×60 Jarnama ad slot plus the "MyPage@Attelkom" line) at the top of every member page; it skips frames and Erbol's prev/next/rand pages, keeps each file's encoding and line endings, and is safe to run again. Ad themes per member are in the script (`THEMES`).
