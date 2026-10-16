@@ -15,3 +15,4 @@ The deprecated 1999-era Attelkom Online site of the Irad worldbuilding project, 
 ## Secret page
 `noc/whitelist.html` is the Attelkom NOC's internal "resource list": every current Irad website with real links and an in-world filter status. It isn't linked from any menu; the only way in is the © sign in the front page footer, which is a hidden link. Add new sites to its table as they launch.
 - `python3 tools/add_banners.py` puts the free-hosting banner (a 468×60 Jarnama ad slot plus the "MyPage@Attelkom" line) at the top of every member page; it skips frames and Erbol's prev/next/rand pages, keeps each file's encoding and line endings, and is safe to run again. Ad themes per member are in the script (`THEMES`).
+- `python3 tools/make_sitemap.py` writes `sitemap.xml` and `robots.txt` (pages untouched; NOC page not named in robots, it carries its own noindex). Run it after adding member pages.
