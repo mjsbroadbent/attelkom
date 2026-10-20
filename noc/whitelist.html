@@ -162,7 +162,7 @@ NOTES
 (function () {
   var GC = "https://irad.goatcounter.com/counter/";
   function get(path) {
-    return fetch(GC + encodeURIComponent(path) + ".json").then(function (r) {
+    return fetch(GC + encodeURIComponent(path) + ".json", { cache: "no-store" }).then(function (r) {
       return r.ok ? r.json().then(function (j) { return parseInt(String(j.count).replace(/[^0-9]/g, ""), 10) || 0; }) : null;
     }).catch(function () { return null; });
   }
