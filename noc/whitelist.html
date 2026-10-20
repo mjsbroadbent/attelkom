@@ -34,6 +34,10 @@ th { text-align: left; background: #C0C0C0; }
 #adpanel { white-space: pre-wrap; }
 .mono { white-space: pre-wrap; }
 .sec { background: #003333; color: #FFCC00; font-weight: bold; }
+.spark { letter-spacing: -1px; color: #003333; white-space: nowrap; }
+#trtable td:nth-child(2), #trtable td:nth-child(3) { text-align: right; white-space: nowrap; }
+#trtable tr.pages td { background: #FFFFE0; }
+#trtable a.h { text-decoration: none; }
 -->
 </STYLE>
 <script>window.goatcounter=new Object();goatcounter.path=p=>location.host+p;</script>
@@ -109,6 +113,14 @@ Last update: 20.10.2026 by r.kurmanov    (previous: 17.10.2026)
 
 <div class="panel"><h3>JARNAMA AD SERVER (ads.attelkom.net)</h3>
 <PRE ID="adpanel">loading campaigns.json ...</PRE></div>
+
+<div class="panel"><h3>GATEWAY TRAFFIC (last 30 days, page views)</h3>
+<PRE ID="trhead">loading traffic.json ...</PRE>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="3" WIDTH="100%" ID="trtable" STYLE="display:none">
+<TR><TH>HOST</TH><TH>30 D</TH><TH>7 D</TH><TH>TREND (30 d)</TH><TH>TOP PAGE</TH></TR>
+</TABLE>
+<PRE ID="trmore"></PRE>
+<PRE>Click a host for its top pages. Collected every 4 hours. Console visits not counted.</PRE></div>
 
 <div class="panel"><h3>FILTER LOG</h3>
 <TABLE BORDER="1" CELLSPACING="0" CELLPADDING="3" WIDTH="100%">
@@ -231,6 +243,46 @@ NOTES
       "\nBy theme          : " + Object.keys(by).sort().map(function (k) { return k + " " + by[k]; }).join(" | ");
     document.getElementById("adpanel").textContent = out;
   }).catch(function () { document.getElementById("adpanel").textContent = "ad server unreachable"; });
+})();
+</SCRIPT>
+<SCRIPT TYPE="text/javascript">
+// GATEWAY TRAFFIC: noc/traffic.json, written every 4 hours by tools/gc_stats.py
+(function () {
+  var NAMES = { "mjsbroadbent.github.io/IradTimes": "Irad Times", "mjsbroadbent.github.io/churchofsaintjanyl": "Church of St. Janyl" };
+  var B = "\u2581\u2582\u2583\u2584\u2585\u2586\u2587\u2588";
+  function spark(a) { var m = Math.max.apply(null, a) || 1; return a.map(function (v) { return v ? B[Math.min(7, Math.floor(v / m * 7.999))] : "\u00b7"; }).join(""); }
+  function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function pad(s, n) { s = String(s); return s.length > n ? s.slice(0, n - 1) + "~" : s + new Array(n - s.length + 1).join(" "); }
+  function bars(title, rows, total) {
+    if (!rows || !rows.length) return title + "\n  (none)\n";
+    var m = rows[0][1] || 1;
+    return title + "\n" + rows.map(function (r) {
+      return "  " + pad(r[0] || "(direct)", 30) + " " + pad(fmt(r[1]), 7) + " " + new Array(Math.max(1, Math.round(r[1] / m * 24)) + 1).join("#");
+    }).join("\n") + "\n";
+  }
+  fetch("traffic.json", { cache: "no-store" }).then(function (r) { if (!r.ok) throw r.status; return r.json(); }).then(function (d) {
+    var up = d.updated ? new Date(new Date(d.updated).getTime() + 6 * 36e5).toISOString().replace("T", " ").slice(0, 16) + " Irad Time" : "?";
+    document.getElementById("trhead").textContent =
+      "All resources: " + fmt(d.total) + " views in 30 days, " + fmt(d.week) + " in the last 7.   Collected " + up + "\n" +
+      "Daily, " + d.range.start + " to " + d.range.end + ":  " + spark(d.daily);
+    var t = document.getElementById("trtable"), tb = t.tBodies[0] || t;
+    Object.keys(d.sites).forEach(function (k) {
+      var s = d.sites[k], tr = document.createElement("tr"), name = NAMES[k] || k;
+      var top = s.top && s.top[0] ? s.top[0][0] + " (" + fmt(s.top[0][1]) + ")" : "";
+      tr.innerHTML = '<td><a href="#" class="h">' + esc(name) + "</a></td><td>" + fmt(s.views) + "</td><td>" + fmt(s.week) +
+        '</td><td class="spark" title="' + esc(d.range.start + " to " + d.range.end) + '">' + spark(s.daily) + "</td><td>" + esc(top) + "</td>";
+      var more = document.createElement("tr"); more.className = "pages"; more.style.display = "none";
+      more.innerHTML = '<td colspan="5"><pre style="margin:0">' + esc((s.top || []).map(function (p) { return pad(fmt(p[1]), 7) + " " + p[0]; }).join("\n")) +
+        "\n(" + s.pages + " pages with views)</pre></td>";
+      tr.querySelector("a").onclick = function (e) { e.preventDefault(); more.style.display = more.style.display === "none" ? "" : "none"; };
+      tb.appendChild(tr); tb.appendChild(more);
+    });
+    t.style.display = "";
+    document.getElementById("trmore").textContent =
+      bars("REFERRERS", d.refs) + "\n" + bars("COUNTRIES", d.locations) + "\n" + bars("BROWSERS", d.browsers) + "\n" +
+      bars("SYSTEMS", d.systems) + "\n" + bars("SCREENS", d.sizes);
+  }).catch(function () { document.getElementById("trhead").textContent = "traffic.json not available yet (collector not run)."; });
 })();
 </SCRIPT>
 </BODY>
