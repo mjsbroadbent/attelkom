@@ -23,7 +23,9 @@ jobs:
       - name: Pull stats from GoatCounter
         env:
           GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
-        run: python3 tools/gc_stats.py
+        run: |
+          if [ -f tools/gc_probe.py ]; then python3 tools/gc_probe.py; exit 0; fi
+          python3 tools/gc_stats.py
       - name: Commit
         run: |
           set +e
