@@ -37,7 +37,8 @@ class Transient(Exception):
 def call(token, path, tries=5, **params):
     q = urllib.parse.urlencode([(k, x) for k, v in params.items() for x in (v if isinstance(v, list) else [v])])
     req = urllib.request.Request(f"{API}{path}?{q}", headers={"Authorization": f"Bearer {token}",
-                                                             "Content-Type": "application/json"})
+                                                             "Content-Type": "application/json",
+                                                             "User-Agent": "attelkom-noc-stats/1.1"})
     last = ""
     for attempt in range(tries):
         try:
@@ -85,6 +86,7 @@ def main():
     start = end - dt.timedelta(days=DAYS - 1)
     days = [(start + dt.timedelta(days=i)).isoformat() for i in range(DAYS)]
     rng = {"start": start.isoformat(), "end": end.isoformat()}
+    call(token, "/me", tries=2)  # cheap check first: tells a dead API or key apart from a heavy query
 
     # every page with its daily views (paged with exclude_paths)
     # GoatCounter sometimes drops the connection on a big page of daily stats, so step the page size down
