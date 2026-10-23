@@ -122,6 +122,20 @@ def main():
         except Transient as e:
             last = e
     if hits is None:
+        # say which simpler queries still work, so the run page shows where GoatCounter breaks
+        for label, path, extra in (("hits without daily", "/stats/hits", {"limit": 5}),
+                                   ("hits daily, 1 day", "/stats/hits", {"limit": 5, "daily": "true",
+                                                                         "start": end.isoformat(),
+                                                                         "end": end.isoformat()}),
+                                   ("total", "/stats/total", {"start": start.isoformat(),
+                                                              "end": end.isoformat()})):
+            if "start" not in extra:
+                extra = {**extra, **rng}
+            try:
+                call(token, path, tries=1, **extra)
+                print(f"::notice::probe {label}: ok")
+            except (Transient, SystemExit) as e:
+                print(f"::notice::probe {label}: {e}")
         raise last
     merged = {}
     for h in hits:
