@@ -34,12 +34,12 @@ class Transient(Exception):
     """GoatCounter was unreachable or answered with a server error; keep the old traffic.json."""
 
 
-def call(token, path, **params):
+def call(token, path, tries=5, **params):
     q = urllib.parse.urlencode([(k, x) for k, v in params.items() for x in (v if isinstance(v, list) else [v])])
     req = urllib.request.Request(f"{API}{path}?{q}", headers={"Authorization": f"Bearer {token}",
                                                              "Content-Type": "application/json"})
     last = ""
-    for attempt in range(5):
+    for attempt in range(tries):
         try:
             with urllib.request.urlopen(req, timeout=40) as r:
                 data = json.load(r)
@@ -54,7 +54,8 @@ def call(token, path, **params):
         except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.HTTPException,
                 json.JSONDecodeError) as e:
             last = f"{type(e).__name__}: {e}"
-        time.sleep(3 + attempt * 5)
+        if attempt < tries - 1:
+            time.sleep(3 + attempt * 5)
     raise Transient(f"GoatCounter {path}: {last}")
 
 
@@ -86,9 +87,17 @@ def main():
     rng = {"start": start.isoformat(), "end": end.isoformat()}
 
     # every page with its daily views (paged with exclude_paths)
-    hits, seen = [], []
+    # GoatCounter sometimes drops the connection on a big page of daily stats, so step the page size down
+    hits, seen, limit = [], [], 50
     while True:
-        r = call(token, "/stats/hits", limit=100, daily="true", exclude_paths=seen, **rng)
+        try:
+            r = call(token, "/stats/hits", tries=2, limit=limit, daily="true", exclude_paths=seen, **rng)
+        except Transient:
+            if limit <= 5:
+                raise
+            limit = max(5, limit // 3)
+            print(f"::notice::GoatCounter dropped a page of hits; retrying {limit} at a time")
+            continue
         batch = [h for h in r.get("hits", []) if not h.get("event")]
         hits += batch
         seen += [str(h.get("path_id")) for h in r.get("hits", []) if h.get("path_id") is not None]
