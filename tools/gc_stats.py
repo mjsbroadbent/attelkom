@@ -89,22 +89,46 @@ def main():
     call(token, "/me", tries=2)  # cheap check first: tells a dead API or key apart from a heavy query
 
     # every page with its daily views (paged with exclude_paths)
-    # GoatCounter sometimes drops the connection on a big page of daily stats, so step the page size down
-    hits, seen, limit = [], [], 50
-    while True:
+    # every page with its daily views. GoatCounter drops the connection when a daily query is too heavy, so
+    # fall back to shorter date windows (and smaller pages) and add the windows up.
+    def fetch(win_start, win_end, limit=50):
+        out, seen = [], []
+        while True:
+            try:
+                r = call(token, "/stats/hits", tries=2, limit=limit, daily="true", exclude_paths=seen,
+                         start=win_start.isoformat(), end=win_end.isoformat())
+            except Transient:
+                if limit <= 10:
+                    raise
+                limit = 10
+                continue
+            out += [h for h in r.get("hits", []) if not h.get("event")]
+            seen += [str(h.get("path_id")) for h in r.get("hits", []) if h.get("path_id") is not None]
+            if not r.get("more") or not r.get("hits") or len(out) > 2000:
+                return out
+
+    hits = None
+    for width in (DAYS, 7, 2):
         try:
-            r = call(token, "/stats/hits", tries=2, limit=limit, daily="true", exclude_paths=seen, **rng)
-        except Transient:
-            if limit <= 5:
-                raise
-            limit = max(5, limit // 3)
-            print(f"::notice::GoatCounter dropped a page of hits; retrying {limit} at a time")
-            continue
-        batch = [h for h in r.get("hits", []) if not h.get("event")]
-        hits += batch
-        seen += [str(h.get("path_id")) for h in r.get("hits", []) if h.get("path_id") is not None]
-        if not r.get("more") or not r.get("hits") or len(hits) > 2000:
+            parts, d0 = [], start
+            while d0 <= end:
+                d1 = min(end, d0 + dt.timedelta(days=width - 1))
+                parts += fetch(d0, d1)
+                d0 = d1 + dt.timedelta(days=1)
+            hits = parts
+            if width != DAYS:
+                print(f"::notice::hits fetched in {width}-day windows")
             break
+        except Transient as e:
+            last = e
+    if hits is None:
+        raise last
+    merged = {}
+    for h in hits:
+        m = merged.setdefault(h.get("path", ""), {"path": h.get("path", ""), "count": 0, "stats": []})
+        m["count"] += num(h.get("count"))
+        m["stats"] += h.get("stats") or []
+    hits = list(merged.values())
 
     sites = {}
     for h in hits:
