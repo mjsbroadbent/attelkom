@@ -91,7 +91,7 @@ def main():
     # every page with its daily views (paged with exclude_paths)
     # every page with its daily views. GoatCounter drops the connection when a daily query is too heavy, so
     # fall back to shorter date windows (and smaller pages) and add the windows up.
-    def fetch(win_start, win_end, limit=50):
+    def fetch(win_start, win_end, limit=100):
         out, seen = [], []
         while True:
             try:
@@ -106,7 +106,14 @@ def main():
                 continue
             out += [h for h in r.get("hits", []) if not h.get("event")]
             seen += [str(h.get("path_id")) for h in r.get("hits", []) if h.get("path_id") is not None]
-            if not r.get("more") or not r.get("hits") or len(out) > 2000:
+            # hits come most-viewed first and include pages with no views in the window; stop at the first
+            # empty one. Every page also lengthens the exclude_paths list in the URL, and GoatCounter drops
+            # the connection once that gets too long (about 1400 ids), so stop well before that.
+            rows = r.get("hits", [])
+            if (not r.get("more") or not rows or any(num(h.get("count")) == 0 for h in rows)
+                    or len(seen) >= 800):
+                if len(seen) >= 800 and r.get("more"):
+                    print(f"::notice::hits {win_start}..{win_end}: stopped after {len(seen)} pages")
                 return out
 
     hits = None
