@@ -98,6 +98,8 @@ def main():
                 r = call(token, "/stats/hits", tries=2, limit=limit, daily="true", exclude_paths=seen,
                          start=win_start.isoformat(), end=win_end.isoformat())
             except Transient:
+                print(f"::notice::hits {win_start}..{win_end}: dropped at page {len(seen) // limit + 1} "
+                      f"(limit {limit}, {len(seen)} paths excluded)")
                 if limit <= 10:
                     raise
                 limit = 10
