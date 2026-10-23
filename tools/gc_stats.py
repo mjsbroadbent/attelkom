@@ -113,7 +113,7 @@ def main():
             if (not r.get("more") or not rows or any(num(h.get("count")) == 0 for h in rows)
                     or len(seen) >= 800):
                 if len(seen) >= 800 and r.get("more"):
-                    print(f"::notice::hits {win_start}..{win_end}: stopped after {len(seen)} pages")
+                    print(f"::notice::hits {win_start}..{win_end}: stopped after the top {len(seen)} paths; the rest have very few views")
                 return out
 
     hits = None
