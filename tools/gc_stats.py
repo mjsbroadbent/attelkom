@@ -11,10 +11,13 @@ first path segment; pages on mjsbroadbent.github.io are split by their first fol
 itself are left out.
 """
 import datetime as dt
+import http.client
 import json
 import os
 import sys
 import time
+import traceback
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -27,22 +30,32 @@ HOST_ALIASES = {"wwv.attelkom.net": "www.attelkom.net"}
 GH_PAGES = "mjsbroadbent.github.io"
 
 
+class Transient(Exception):
+    """GoatCounter was unreachable or answered with a server error; keep the old traffic.json."""
+
+
 def call(token, path, **params):
     q = urllib.parse.urlencode([(k, x) for k, v in params.items() for x in (v if isinstance(v, list) else [v])])
     req = urllib.request.Request(f"{API}{path}?{q}", headers={"Authorization": f"Bearer {token}",
                                                              "Content-Type": "application/json"})
-    for attempt in range(4):
+    last = ""
+    for attempt in range(5):
         try:
             with urllib.request.urlopen(req, timeout=40) as r:
-                time.sleep(0.3)  # the API allows 4 requests a second
-                return json.load(r)
+                data = json.load(r)
+            time.sleep(0.3)  # the API allows 4 requests a second
+            return data
         except urllib.error.HTTPError as e:
-            if e.code == 429 and attempt < 3:
-                time.sleep(2 + attempt * 2)
-                continue
             body = e.read().decode("utf-8", "replace")[:300]
-            raise SystemExit(f"::error::GoatCounter {path}: HTTP {e.code} {body}")
-    raise SystemExit(f"::error::GoatCounter {path}: rate limited")
+            if e.code == 429 or e.code >= 500:
+                last = f"HTTP {e.code} {body}"
+            else:
+                raise SystemExit(f"GoatCounter {path}: HTTP {e.code} {body}")
+        except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.HTTPException,
+                json.JSONDecodeError) as e:
+            last = f"{type(e).__name__}: {e}"
+        time.sleep(3 + attempt * 5)
+    raise Transient(f"GoatCounter {path}: {last}")
 
 
 def num(x):
@@ -133,4 +146,16 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    # errors go to stdout as workflow annotations, so the reason shows on the run page without the log
+    try:
+        main()
+    except Transient as e:
+        print(f"::warning::{e}; traffic.json left as it was")
+    except SystemExit as e:
+        if e.code not in (None, 0):
+            print(f"::error::{e.code}")
+            sys.exit(1)
+    except Exception as e:
+        traceback.print_exc(file=sys.stdout)
+        print(f"::error::{type(e).__name__}: {str(e)[:300]}")
+        sys.exit(1)
