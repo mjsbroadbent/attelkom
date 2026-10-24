@@ -27,7 +27,7 @@ TITLE_FIX = {
 UPDATED = {  # last-updated dates for the real sites, in the spirit of their content
     "Ahmet2321": "2001-03-11", "Aizada6121": "2003-06-02", "Artyom4471": "1999-11-28", "Asel3317": "2002-04-14",
     "Bolot7720": "2000-09-17", "Daniyar8645": "2004-01-09", "Emil6304": "1999-12-30", "Erbol8645": "2003-08-21",
-    "Gary3498": "1997-08-02", "Gulzat2915": "2001-10-05", "Joldosh3145": "2004-07-19", "Kanykei5093": "2002-11-23",
+    "Beknazar4417": "2001-04-08", "Gary3498": "1997-08-02", "Gulzat2915": "2001-10-05", "Joldosh3145": "2004-07-19", "Kanykei5093": "2002-11-23",
     "Marat4086": "2000-05-30", "Maryam5461": "2003-02-27", "Ramiro8152": "2001-06-16", "Zarina4652": "2002-12-08",
 }
 
